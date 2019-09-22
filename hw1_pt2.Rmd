@@ -1,0 +1,36 @@
+---
+title: "hw1_pt2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Sampling 100 values from a log-normal distribution
+```{r log-normal dist}
+set.seed(1234)
+m <- 1
+s <- 0.25
+location <- log(m^2 / sqrt(s^2 + m^2))
+shape <- sqrt(log(1 + (s^2 / m^2)))
+samples <- rlnorm(n=100, location, shape)
+```
+
+## Histograms of the samples
+
+```{r}
+hist(samples,
+     main = "Histogram of samples from log-normal distribution")
+```
+
+```{r}
+hist(log(samples),
+     main = "Histogram of samples from log-normal distribution on a log scale")
+```
+
+
+## Reporting the sample mean and variance
+Sample mean: `r mean(samples)`
+
+Sample variance: `r sd(samples)**2`
